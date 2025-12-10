@@ -1,17 +1,22 @@
-function Header() {
-  return <h1>Welcome!</h1>;
-}
+import { useState } from "react";
 
-function Footer() {
-  return <p>2025 BREADONE</p>;
+function CounterWithState() {
+  const [count, setCount] = useState(0);
+  function increase() {
+    setCount(count + 1);
+  }
+  return (
+    <div>
+      <h1>Count : {count}</h1>
+      <button onClick={increase}>Click me!</button>
+    </div>
+  );
 }
 
 function App() {
   return (
     <div>
-      <Header />
-      <p>내용입니다. </p>
-      <Footer />
+      <CounterWithState></CounterWithState>
     </div>
   );
 }
