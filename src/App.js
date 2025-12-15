@@ -33,10 +33,26 @@ function NameInput() {
   );
 }
 
+function BackgroundChanger() {
+  const [bgColor, setBgColor] = useState("white");
+
+  function changeBackgroundColor() {
+    setBgColor(bgColor === "white" ? "blue" : "white");
+  }
+
+  return (
+    <div style={{ backgroundColor: bgColor, padding: "20px" }}>
+      <button onClick={changeBackgroundColor}>배경색 변경하기</button>
+    </div>
+  );
+}
+
 function App() {
   return (
     <div>
+      <Counter></Counter>
       <NameInput></NameInput>
+      <BackgroundChanger></BackgroundChanger>
     </div>
   );
 }
