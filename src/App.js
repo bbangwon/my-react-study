@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function CounterWithState() {
+function Counter() {
   const [count, setCount] = useState(0);
   function increase() {
     setCount(count + 1);
@@ -13,10 +13,30 @@ function CounterWithState() {
   );
 }
 
+function NameInput() {
+  const [name, setName] = useState("");
+
+  function handleChange(event) {
+    console.log(event);
+    setName(event.target.value);
+  }
+  return (
+    <div>
+      <input
+        type="text"
+        placeholder="이름을 입력하세요"
+        value={name}
+        onChange={handleChange}
+      />
+      <h1>안녕하세요, {name}님!</h1>
+    </div>
+  );
+}
+
 function App() {
   return (
     <div>
-      <CounterWithState></CounterWithState>
+      <NameInput></NameInput>
     </div>
   );
 }
