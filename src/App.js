@@ -1,31 +1,33 @@
 import { useEffect, useState } from "react";
 
-function WelcomeMessage() {
-  const [name, setName] = useState("react");
+function Counter() {
+  const [count, setCounter] = useState(0);
 
   useEffect(() => {
-    console.log("컴포넌트가 화면에 나타났어요!");
-  }, []);
+    console.log(`카운트가 ${count}로 변경되었습니다.`);
+  }, [count]);
 
-  function changeName() {
-    setName("react master");
+  function increase() {
+    setCounter(count + 1);
   }
+
   return (
     <div>
-      <h1>안녕하세요, {name}님!</h1>
-      <button onClick={changeName}>이름 변경하기</button>
+      <h1>카운트 : {count}</h1>
+      <button onClick={increase}>클릭하면 올라가요</button>
     </div>
   );
 }
 
-function NameLogger() {
+function Profile() {
   const [name, setName] = useState("");
+  const [age, setAge] = useState("");
 
   useEffect(() => {
-    console.log(`이름이 ${name}으로 변경되었습니다.`);
-  }, [name]);
+    console.log(`이름: ${name}, 나이 ${age}`);
+  }, [name, age]);
 
-  function handleChange(event) {
+  function handleChangeName(event) {
     setName(event.target.value);
   }
 
@@ -35,33 +37,14 @@ function NameLogger() {
         type="text"
         placeholder="이름을 입력하세요"
         value={name}
-        onChange={handleChange}
+        onChange={handleChangeName}
       />
-      <h1>안녕하세요 {name}님!</h1>
-    </div>
-  );
-}
-
-function TitleChanger() {
-  const [title, setTitle] = useState("Home");
-
-  useEffect(() => {
-    document.title = title;
-  }, [title]);
-
-  function handleChange(event) {
-    setTitle(event.target.value);
-  }
-
-  return (
-    <div>
       <input
         type="text"
-        placeholder="페이지 제목을 입력하세요"
-        value={title}
-        onChange={handleChange}
+        placeholder="나이를 입력하세요"
+        value={age}
+        onChange={(event) => setAge(event.target.value)}
       />
-      <h1>현재 제목: {title}</h1>
     </div>
   );
 }
@@ -69,7 +52,9 @@ function TitleChanger() {
 function App() {
   return (
     <div>
-      <TitleChanger></TitleChanger>
+      <Counter></Counter>
+      <hr />
+      <Profile></Profile>
     </div>
   );
 }
