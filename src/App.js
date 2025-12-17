@@ -1,24 +1,31 @@
-import { useEffect, useState } from "react";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 
-function LoadingMessage() {
-  const [loading, setLoading] = useState(true);
+function Home() {
+  return <h1>홈 페이지</h1>;
+}
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 2000);
+function About() {
+  return <h1>소개 페이지</h1>;
+}
 
-    return () => clearTimeout(timer);
-  }, []);
-
-  return <div>{loading ? <h1>로딩 중...</h1> : <h1>로딩 완료</h1>}</div>;
+function Contact() {
+  return <h1>연락처 페이지</h1>;
 }
 
 function App() {
   return (
-    <div>
-      <LoadingMessage />
-    </div>
+    <BrowserRouter>
+      <nav>
+        <Link to="/">홈</Link>
+        <Link to="/about">소개</Link>
+        <Link to="/contact">연락처</Link>
+      </nav>
+      <Routes>
+        <Route path="/" element={<Home></Home>}></Route>
+        <Route path="/about" element={<About></About>}></Route>
+        <Route path="/contact" element={<Contact></Contact>}></Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
