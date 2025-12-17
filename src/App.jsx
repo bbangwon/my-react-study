@@ -1,25 +1,21 @@
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
 
-function Home() {
-  return <h1>홈 페이지</h1>;
-}
-
-function About() {
-  return <h1>소개 페이지</h1>;
-}
-
-function Contact() {
-  return <h1>연락처 페이지</h1>;
-}
+import "./App.css";
 
 function App() {
   return (
     <BrowserRouter>
-      <nav>
-        <Link to="/">홈</Link>
-        <Link to="/about">소개</Link>
-        <Link to="/contact">연락처</Link>
-      </nav>
+      <header>
+        <h1>My Website</h1>
+        <nav>
+          <Link to="/">홈</Link>
+          <Link to="/about">소개</Link>
+          <Link to="/contact">연락처</Link>
+        </nav>
+      </header>
       <Routes>
         <Route path="/" element={<Home></Home>}></Route>
         <Route path="/about" element={<About></About>}></Route>
