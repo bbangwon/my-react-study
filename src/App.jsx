@@ -1,11 +1,9 @@
-import { NameProvider } from "./NameContext";
-import Parent from "./Parent";
-
+import AppTheme from "./components/AppTheme";
 function App() {
   return (
-    <NameProvider>
-      <Parent></Parent>
-    </NameProvider>
+    <div>
+      <AppTheme></AppTheme>
+    </div>
   );
 }
 
